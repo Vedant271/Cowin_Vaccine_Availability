@@ -16,8 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, //pata nhi
       // theme: ThemeData(
       //     brightness: Brightness.dark, primarySwatch: Colors.teal), //check out
-     theme: ThemeData(
-         primarySwatch: Colors.red), //check out
+    //check out
       home: Home(),
     );
   }
@@ -59,8 +58,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text('Vaccination Slots'),
+          title: Text('Check Vaccination Slots'),
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -69,13 +69,29 @@ class _HomeState extends State<Home> {
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: <Widget>[
-                Container(),
+                Container(
+                  height: 250,
+                  child: Image.asset('assets/vaccine_logo.png'),
+                ),
                 TextField(
+                  textAlign: TextAlign.center,
                   keyboardType: TextInputType.number,
                   maxLength: 6,
                   controller: pincodecontroller,
                   decoration: InputDecoration(
-                    hintText: 'Enter PIN CODE',
+                    label: Text('Enter PIN CODE'),
+                    contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.lightBlueAccent, width: 1.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
                   ),
                 ),
                 Row(
@@ -84,20 +100,38 @@ class _HomeState extends State<Home> {
                       child: Container(
                         height: 60,
                         child: TextField(
+                          textAlign: TextAlign.center,
                           controller: daycontroller,
                           decoration: InputDecoration(
-                            hintText: 'Enter DAY',
+                            label: Text('Enter DAY'),
+                            contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.lightBlueAccent, width: 1.0),
+                              borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+                              borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                            ),
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 10,
+                      width: 20,
+                    ),
+                    SizedBox(
+                      child: Text('MONTH : '),
+                      width: 70,
                     ),
                     Expanded(
                         child:Container(
                           height: 53,
                           child: DropdownButton<String>(
+                            borderRadius: BorderRadius.all(Radius.circular(20),),
                             isExpanded: true,
                             value: dropdownValue,
                             icon: const Icon(
@@ -106,8 +140,8 @@ class _HomeState extends State<Home> {
                             iconSize: 24,
                             elevation: 16,
                             underline: Container(
-                              height: 1,
-                              color: Colors.white38,
+                              height: 2,
+                              color: Colors.lightBlueAccent,
                             ),
                             onChanged: (String? newValue) {
                               setState(() {
@@ -145,6 +179,7 @@ class _HomeState extends State<Home> {
                   width: double.infinity,
                   height: 45,
                   child: ElevatedButton(
+style: ElevatedButton.styleFrom(elevation: 10,),
                       onPressed: (){
                         fetch();
                       },

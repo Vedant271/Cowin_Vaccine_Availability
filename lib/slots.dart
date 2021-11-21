@@ -17,7 +17,11 @@ class _SlotState extends State<Slot> {
         title: Text('Available Slots'),
       ),
       body: Container(
-        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          image: DecorationImage(image: AssetImage('assets/vaccine_logo.png')),
+        ),
+        // padding: EdgeInsets.all(10),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: ListView.builder(
@@ -28,12 +32,22 @@ class _SlotState extends State<Slot> {
                 borderRadius: BorderRadius.all(
                   Radius.circular(20),
                 ),
-                color: Colors.orangeAccent,
-
+                color: Colors.white.withOpacity(0.9),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    offset: const Offset(
+                      10.0,
+                      10.0,
+                    ),
+                    blurRadius: 10.0,
+                    spreadRadius: 2.0,
+                  ),
+                ],
               ),
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.all(10),
-              height: 200,
+              height: 250,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
